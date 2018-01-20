@@ -80,7 +80,7 @@ final class SafeCache<Key: Hashable, Element>: Cachable {
     // Avoid race-condition
     private let lock = NSLock()
     
-    //
+    // We can override subcript func
     func item(at key: Key) -> Element? {
         
         // Duplicated code
@@ -128,6 +128,7 @@ final class NetworkService: NetworkServiceType {
     private let cache = SafeCache<String, Data>()
     
     // Init
+    // Injection Dependency for testing
     init(fetcher: Fetcherable, plugins: [Plugin] = []) {
         self.fetcher = fetcher
         self.plugins = plugins
